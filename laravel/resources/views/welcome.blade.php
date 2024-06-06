@@ -1,49 +1,10 @@
 @extends("layouts.layout")
+
 @section("content")
 @php
 $groupedCategories = $categories->groupBy('type');
 @endphp
-<header style="background-color: #E0E0E0;" class="shadow p-2 d-flex justify-content-between">
-    <div class="logo">AAS PHONES</div>
-    <nav  class=" d-flex align-items-center">
-        
-        @foreach ($groupedCategories as $type => $group)
-        <div class="custom-select-container me-2">
-            <select name="{{ $type }}" id="{{ $type }}" class="form-select ">
-                <option value="" selected disabled>{{ ucfirst($type) }}</option>
-                @foreach ($group as $cat)
-                <option value="{{ $cat->name }}">{{ $cat->name }}</option>
-                @endforeach
-            </select>
-        </div>
-        @endforeach
 
-    </nav>
-    <div class="d-flex">
-    <form action="" class="d-flex align-items-center">
-        <input type="search" class="form-control" placeholder="search...">
-        <button class="btn btn-dark rounded-pill ms-2" type="submit"><i class="bi bi-search"></i></button>
-        
-    </form>
-    @if (Route::has('login'))
-            @auth
-            <a href="{{ url('/dashboard') }}" class="text-decoration-none text-dark m-2">
-                Dashboard
-            </a>
-            @else
-            <a href="{{ route('login') }}" class="text-decoration-none text-dark m-2">
-                Log in
-            </a>
-
-            @if (Route::has('register'))
-            <a href="{{ route('register') }}" class="text-decoration-none text-dark m-2">
-                Register
-            </a>
-            @endif
-            @endauth
-        @endif
-    </div>
-</header>
 <div>
     <img src="/image.png" alt="">
 </div>
@@ -62,12 +23,5 @@ $groupedCategories = $categories->groupBy('type');
 
     @endforeach
     </div>
-<footer class="bg-dark text-white text-center py-4">
-    <p>AAS PHONES</p>
-    <p>CONTACTS</p>
-    <p>Tel: +222 6 0000000</p>
-    <p>EMAIL: Example@Mail.Com</p>
-    <p>Instagram: Aas_Phone</p>
-    <p>&copy; Your Details Reserved</p>
-</footer>  
+ 
 @endsection

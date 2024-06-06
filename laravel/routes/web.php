@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductListController;
 
 Route::get('/', [HomeController::class,"index"]);
 
@@ -18,8 +19,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::resource('products',ProductController::class);
+Route::resource('product',ProductController::class);
 Route::resource('category',CategoryController::class);
+Route::resource('products', ProductListController::class);
 
 
 require __DIR__.'/auth.php';
