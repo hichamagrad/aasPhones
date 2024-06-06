@@ -3,9 +3,9 @@
 @php
 $groupedCategories = $categories->groupBy('type');
 @endphp
-<header class="shadow p-2 d-flex justify-content-between">
-    <div>logo</div>
-    <nav class=" d-flex align-items-center">
+<header style="background-color: #E0E0E0;" class="shadow p-2 d-flex justify-content-between">
+    <div class="logo">AAS PHONES</div>
+    <nav  class=" d-flex align-items-center">
         
         @foreach ($groupedCategories as $type => $group)
         <div class="custom-select-container me-2">
@@ -52,7 +52,7 @@ $groupedCategories = $categories->groupBy('type');
 
 @foreach ($groupedCategories as $type => $group)
     <div style="border-radius: 25px;cursor:pointer" class="shadow  bg-light m-4 col-10 col-md-5 ">
-      <a href="/{{ $type }}" style="text-decoration: none;color:black" class="d-flex align-items-center justify-content-between">
+      <a href="/{{ $type }}" style="text-transform:uppercase; text-decoration: none;color:black" class="d-flex align-items-center justify-content-between">
       @if(isset($group->first()->image)) 
         <h1>{{ $type }}</h1>
         <img style="height: 200px;" src="{{ asset('storage/' . $group->first()->image) }}" alt="{{ $type }}" srcset="">
@@ -62,5 +62,12 @@ $groupedCategories = $categories->groupBy('type');
 
     @endforeach
     </div>
-  
+<footer class="bg-dark text-white text-center py-4">
+    <p>AAS PHONES</p>
+    <p>CONTACTS</p>
+    <p>Tel: +222 6 0000000</p>
+    <p>EMAIL: Example@Mail.Com</p>
+    <p>Instagram: Aas_Phone</p>
+    <p>&copy; Your Details Reserved</p>
+</footer>  
 @endsection
