@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form enctype="multipart/form-data" action="{{route('products.store')}}" method="post">
+    <form enctype="multipart/form-data" action="{{route('product.store')}}" method="post">
         @csrf
         <input type="text" name="name" placeholder="name">
         <input type="file" name="image" placeholder="image">

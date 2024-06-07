@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
@@ -22,6 +23,8 @@ Route::middleware('auth')->group(function () {
 Route::resource('product',ProductController::class);
 Route::resource('category',CategoryController::class);
 Route::resource('products', ProductListController::class);
+Route::resource('cart', CartController::class)->only(['index', 'store', 'destroy']);
+Route::post('/cart/{id}', [CartController::class, 'store'])->name('cart.store');
 
 
 require __DIR__.'/auth.php';

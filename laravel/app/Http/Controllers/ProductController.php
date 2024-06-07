@@ -37,6 +37,7 @@ class ProductController extends Controller
         $produit->discription=$request->discription;
         $produit->category_id=$request->category_id;
         $produit->save();
+        return view("produits.create");
     }
 
     /**

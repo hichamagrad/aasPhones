@@ -14,6 +14,8 @@ class ProductListController extends Controller
     public function index(Request $request)
     {
         $categories = Category::all();
+        $groupedCategories = $categories->groupBy('type');
+
         $query = Product::query();
 
         if ($request->has('category') && $request->has('type')) {
@@ -39,7 +41,7 @@ class ProductListController extends Controller
 
         $products = $query->paginate(9);
 
-        return view('products.index', compact('categories', 'products'));
+        return view('products.index', compact('groupedCategories','categories', 'products'));
     }
     
 
@@ -64,10 +66,11 @@ class ProductListController extends Controller
      */
     public function show($id)
     {
+        $product = Product::find($id);
         $categories = Category::all();
-        $product = Product::findOrFail($id);
+        $groupedCategories = $categories->groupBy('type');
 
-        return view('products.show', compact('product', 'categories'));
+        return view('products.show', compact('product','categories', 'groupedCategories'));
     }
 
     /**
