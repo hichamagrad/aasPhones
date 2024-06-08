@@ -8,6 +8,9 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductListController;
 
+
+
+
 Route::get('/', [HomeController::class,"index"]);
 
 Route::get('/dashboard', function () {
@@ -25,6 +28,7 @@ Route::resource('category',CategoryController::class);
 Route::resource('products', ProductListController::class);
 Route::resource('cart', CartController::class)->only(['index', 'store', 'destroy']);
 Route::post('/cart/{id}', [CartController::class, 'store'])->name('cart.store');
+Route::get('/products/search', 'ProductListController@search')->name('products.search');
 
 
 require __DIR__.'/auth.php';

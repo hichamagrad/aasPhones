@@ -15,7 +15,7 @@ class CartController extends Controller
     {
         $categories = Category::all();
         $cart = session()->get('cart', []);
-        return view('cart.index', compact('cart','categories'));
+        return view('cart.index', compact('cart', 'categories'));
     }
 
     /**
@@ -25,20 +25,20 @@ class CartController extends Controller
     {
         $product = Product::findOrFail($id);
         $quantity = $request->input('quantity', 1);
-
+    
         $cart = session()->get('cart', []);
-
+    
         if (isset($cart[$id])) {
             $cart[$id]['quantity'] += $quantity;
         } else {
             $cart[$id] = [
                 "name" => $product->name,
                 "quantity" => $quantity,
-                "price" => $product->price,
+                "prix" => $product->prix,  // Ensure 'prix' is set correctly
                 "image" => $product->image
             ];
         }
-
+    
         session()->put('cart', $cart);
         return redirect()->route('cart.index')->with('success', 'Product added to cart!');
     }

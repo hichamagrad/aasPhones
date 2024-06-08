@@ -13,10 +13,9 @@
         @endforeach
     </nav>
     <div class="d-flex">
-        <form action="" class="d-flex align-items-center">
-            <input type="search" class="form-control" placeholder="search...">
-            <button class="btn btn-dark rounded-pill ms-2" type="submit"><i class="bi bi-search"></i></button>
-        </form>
+        <a href="{{ route('cart.index') }}" class="btn btn-outline-dark me-2">
+            <i class="bi bi-cart-fill me-1"></i> Cart
+        </a> 
         @if (Route::has('login'))
             @auth
             <a href="{{ url('/dashboard') }}" class="text-decoration-none text-dark m-2">

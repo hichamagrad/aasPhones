@@ -9,8 +9,8 @@
 
     <form enctype="multipart/form-data" action="{{route('category.store')}}" method="post">
        @csrf
-        <input type="text" name="name">
-        <input type="text" name="type">
+        <input type="text" name="name" placeholder="name">
+        <input type="text" name="type" placeholder="type">
 
         <input type="file" name="image">
     
