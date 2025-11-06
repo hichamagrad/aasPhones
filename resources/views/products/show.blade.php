@@ -18,7 +18,7 @@ $groupedCategories = $categories->groupBy('type');
                     <h1 class="card-title">{{ $product->name }}</h1>
                     <p class="card-text">{{ $product->discription }}</p>
                     <h4>{{ $product->prix }} DH</h4>
-                    <form action="{{ route('cart.store', ['id' => $product->id]) }}" method="POST" class="d-flex">
+                    <form action="{{ route('cart.add', ['id' => $product->id]) }}" method="POST" class="d-flex">
                         @csrf
                         <input type="number" name="quantity" class="form-control w-25 me-2" value="1" min="1">
                         <button type="submit" class="btn btn-primary">Add to Cart</button>

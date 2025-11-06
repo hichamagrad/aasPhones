@@ -27,7 +27,8 @@ Route::resource('product',ProductController::class);
 Route::resource('category',CategoryController::class);
 Route::resource('products', ProductListController::class);
 Route::resource('cart', CartController::class)->only(['index', 'store', 'destroy']);
-Route::post('/cart/{id}', [CartController::class, 'store'])->name('cart.store');
+// Named 'cart.add' to avoid collision with resource route name 'cart.store'
+Route::post('/cart/{id}', [CartController::class, 'store'])->name('cart.add');
 Route::get('/products/search', 'ProductListController@search')->name('products.search');
 
 
